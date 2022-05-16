@@ -15,11 +15,14 @@ struct CategoryListView: View {
       LazyHStack {
         ForEach(viewModel.categories, id:
                   \.title) { category in
-          Text(category.title)
-            .foregroundColor(Color.white)
-            .padding()
-            .background(Color.blue)
-            .clipShape(Capsule())
+          NavigationLink(destination: RecipeListView()) {
+            Text(category.title)
+              .foregroundColor(Color.white)
+              .padding(.horizontal)
+              .padding(.vertical, 5)
+              .background(Color("AccentColor"))
+              .clipShape(Capsule())
+          }
             
         }
       }

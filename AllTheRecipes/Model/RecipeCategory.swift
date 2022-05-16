@@ -15,4 +15,24 @@ struct CategoryResponse: Decodable {
 struct RecipeCategory: Decodable {
   let imageUrl: String
   let title: String
+  var emoji: String {
+    switch title {
+    case "Chicken":
+      return "🍗"
+    case "Pizza":
+      return "🍕"
+    case "Breakfast":
+      return "🍳"
+    case "Bacon":
+      return "🥓"
+    case "Steak":
+      return "🥩"
+    case "Indian":
+      return "🍛"
+    case "Asian":
+      return "🍚"
+    default:
+      return "🍽"
+    }
+  }
 }
