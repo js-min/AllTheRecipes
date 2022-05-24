@@ -10,12 +10,13 @@ import Combine
 
 protocol RecipeServiceProtocol {
   func getCategories() -> AnyPublisher<[RecipeCategory], ApiError>
-  func searchRecipes(query: String) -> AnyPublisher<SearchRecipeResponse, ApiError>
+  func searchRecipes(query: String) -> AnyPublisher<[Recipe], ApiError>
   func getRecipe(id: Int) -> AnyPublisher<Recipe, ApiError>
 }
 
 struct RecipeService: RecipeServiceProtocol {
   func getCategories() -> AnyPublisher<[RecipeCategory], ApiError> {
+    print(RecipeApi.getCategories.urlRequest)
     return URLSession.shared
       .dataTaskPublisher(for: RecipeApi.getCategories.urlRequest)
       .receive(on: DispatchQueue.main)
@@ -35,14 +36,30 @@ struct RecipeService: RecipeServiceProtocol {
         }
       }
       .eraseToAnyPublisher()
+    
+//    return URLSession.shared
+//      .dataTaskPublisher(for: RecipeApi.getCategories.urlRequest)
+//      .receive(on: DispatchQueue.main)
+//      .mapError { _ in ApiError.unknown }
+//      .tryMap { data, response in
+//        guard let response = response as? HTTPURLResponse else { throw ApiError.unknown }
+//        guard (200..<300).contains(response.statusCode) else { throw ApiError.errorCode(response.statusCode)}
+//        return data
+//      }
+//      .mapError { $0 as! ApiError }
+//      .decode(type: CategoryResponse.self, decoder: JSONDecoder())
+//      .mapError { _ in ApiError.decodingError }
+//      .map(\.categories)
+//      .eraseToAnyPublisher()
   }
   
-  func searchRecipes(query: String) -> AnyPublisher<SearchRecipeResponse, ApiError> {
+  func searchRecipes(query: String) -> AnyPublisher<[Recipe], ApiError> {
+    print(RecipeApi.searchRecipes(query: query).urlRequest)
     return URLSession.shared
       .dataTaskPublisher(for: RecipeApi.searchRecipes(query: query).urlRequest)
       .receive(on: DispatchQueue.main)
       .mapError { _ in ApiError.unknown }
-      .flatMap { data, response -> AnyPublisher<SearchRecipeResponse, ApiError> in
+      .flatMap { data, response -> AnyPublisher<[Recipe], ApiError> in
         guard let response = response as? HTTPURLResponse else {
           return Fail(error: ApiError.unknown).eraseToAnyPublisher()
         }
@@ -50,6 +67,7 @@ struct RecipeService: RecipeServiceProtocol {
           return Just(data)
             .decode(type: SearchRecipeResponse.self, decoder: JSONDecoder())
             .mapError{ _ in ApiError.decodingError }
+            .map(\.recipes)
             .eraseToAnyPublisher()
         } else {
           return Fail(error: ApiError.errorCode(response.statusCode)).eraseToAnyPublisher()

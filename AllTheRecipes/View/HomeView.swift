@@ -11,23 +11,29 @@ struct HomeView: View {
   @State var searchTerm: String = ""
   
   var body: some View {
-    NavigationView {
-      VStack(alignment: .leading) {
+    ScrollView(showsIndicators: false) {
+      LazyVStack(alignment: .leading) {
+//        Text("Hello")
+//          .font(.title)
+//          .fontWeight(.bold)
+//          .padding(.horizontal)
         Text("What do you want to cook?")
-          .padding()
+          .font(.title2)
+          .fontWeight(.bold)
+          .padding(.horizontal)
         
         HStack {
           Image(systemName: "magnifyingglass")
             .frame(width: 20, height: 20)
           TextField("Search recipes", text: $searchTerm)
         }
-          .padding(.vertical, 10)
-          .padding(.horizontal, 10)
-          .foregroundColor(Color.gray)
-          .background(Color("SecondaryColor"))
-          .cornerRadius(10)
-          .padding(.horizontal, 10)
-          
+        .padding(.vertical, 10)
+        .padding(.horizontal, 10)
+        .foregroundColor(Color.gray)
+        .background(Color("SecondaryColor"))
+        .cornerRadius(10)
+        .padding(.horizontal, 10)
+        
         Text("Category")
           .font(.title2)
           .bold()
@@ -35,10 +41,8 @@ struct HomeView: View {
         CategoryVerticalListView()
         Spacer()
       }
-      .foregroundColor(Color("AccentColor"))
-      .navigationTitle("Hi, Yeppi")
     }
-    
+    .foregroundColor(Color("AccentColor"))
   }
 }
 

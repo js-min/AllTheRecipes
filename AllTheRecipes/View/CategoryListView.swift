@@ -15,7 +15,7 @@ struct CategoryListView: View {
       LazyHStack {
         ForEach(viewModel.categories, id:
                   \.title) { category in
-          NavigationLink(destination: RecipeListView()) {
+          NavigationLink(destination: RecipeListView(category: category.title)) {
             Text(category.title)
               .foregroundColor(Color.white)
               .padding(.horizontal)

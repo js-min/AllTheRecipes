@@ -13,7 +13,7 @@ struct CategoryVerticalListView: View {
   var body: some View {
     ForEach(viewModel.categories, id:
               \.title) { category in
-      NavigationLink(destination: RecipeListView()) {
+      NavigationLink(destination: RecipeListView(category: category.title)) {
         HStack {
           Text(category.emoji)
             .font(.title2)

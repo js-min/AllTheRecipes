@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9AD12C8283D30FD00F97FB8 /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD12C7283D30FD00F97FB8 /* RecipeListViewModel.swift */; };
 		D9DE0C25282D48E800C7966E /* AllTheRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE0C24282D48E800C7966E /* AllTheRecipesApp.swift */; };
 		D9DE0C27282D48E800C7966E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE0C26282D48E800C7966E /* ContentView.swift */; };
 		D9DE0C29282D48EB00C7966E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9DE0C28282D48EB00C7966E /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D9AD12C7283D30FD00F97FB8 /* RecipeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
 		D9DE0C21282D48E800C7966E /* AllTheRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllTheRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9DE0C24282D48E800C7966E /* AllTheRecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTheRecipesApp.swift; sourceTree = "<group>"; };
 		D9DE0C26282D48E800C7966E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				D9DE0C4628315F2400C7966E /* CategoryListViewModel.swift */,
+				D9AD12C7283D30FD00F97FB8 /* RecipeListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				D9DE0C25282D48E800C7966E /* AllTheRecipesApp.swift in Sources */,
 				D9DE0C3D282E828500C7966E /* ApiError.swift in Sources */,
 				D9DE0C4528315F1500C7966E /* CategoryListView.swift in Sources */,
+				D9AD12C8283D30FD00F97FB8 /* RecipeListViewModel.swift in Sources */,
 				D9DE0C37282D4D1D00C7966E /* RecipeCategory.swift in Sources */,
 				D9DE0C4728315F2400C7966E /* CategoryListViewModel.swift in Sources */,
 			);
